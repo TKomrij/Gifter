@@ -21,6 +21,12 @@ export const PostProvider = (props) => {
         });
     };
 
+    const searchPosts = (searchTerm) => {
+        return fetch(`/api/Post/searcj?q=${searchTerm}&sortDesc=false`)
+            .then((res) => res.json())
+            .then(setPosts);
+    };
+
     return (
         <PostContext.Provider value={{ posts, getAllPosts, addPost }}>
             {props.children}
